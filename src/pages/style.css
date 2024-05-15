@@ -1,0 +1,26 @@
+.fixedButton {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+form {
+  background-color: #fcfcfc;
+  border: 1px solid #eceded;
+}
+
+textarea {
+  height: 200px;
+}
+
+.formButton {
+  background-color: #f9a820;
+}
+
+.newPost {
+    color: #f9a820;
+    font-size: 24px;
+}
+
+.newPostTitle {
+    color: #355474;
+}

@@ -1,0 +1,21 @@
+nav {
+    background-color: #0D2033;
+}
+
+nav ul li a {
+    color: #C3C3C3;
+    cursor: pointer;
+}
+
+nav ul li a:hover {
+    color: #F9A820;
+}
+
+.loginBtn {
+    color: #F9A820;
+}
+
+.signupBtn {
+    background-color: #F9A820;
+    margin-left: 20px !important;
+}
