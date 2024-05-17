@@ -1,33 +1,32 @@
-import { FaUserCircle, FaComment } from "react-icons/fa";
-import { MdRemoveRedEye } from "react-icons/md";
-import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
-
-import "../Cards/style.css";
-
-import useSWR from "swr";
-import { getData } from "../../../services/api/queries";
+import { FaUserCircle, FaComment } from 'react-icons/fa';
+import { MdRemoveRedEye } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
+import '../Cards/style.css';
+import useStore from '../../../services/store/authStore';
 
 const Cards = () => {
-  const { data } = useSWR("/core/news/", getData);
-  const navigate = useNavigate(); // Initialize useNavigate hook
+  const news = useStore((state) => state.news);
+  const setCurrentNews = useStore((state) => state.setCurrentNews);
+  const navigate = useNavigate();
 
-  const handleCardClick = (id) => {
-    navigate(`/details/${id}`);
+  const handleCardClick = (item) => {
+    setCurrentNews(item);
+    navigate(`/details/${item.id}`);
   };
 
   return (
     <>
       <div className="my-8 ml-32">
-        {data ? <span>{data.length} news</span> : <span>Loading...</span>}
+        {news.length > 0 ? <span>{news.length} news</span> : <span>Loading...</span>}
       </div>
 
       <div className="flex flex-wrap justify-center">
-        {data ? (
-          data.map((item) => (
+        {news.length > 0 ? (
+          news.map((item) => (
             <div
               key={item.id}
               className="w-1/4 rounded overflow-hidden shadow-lg m-4 cursor-pointer"
-              onClick={() => handleCardClick(item.id)} // Add onClick handler
+              onClick={() => handleCardClick(item)}
             >
               <div className="">
                 <img className="w-full" src={item.image} alt="Icon" />

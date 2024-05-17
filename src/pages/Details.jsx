@@ -2,31 +2,30 @@ import { useParams, Link } from "react-router-dom";
 import { GoMoveToStart, GoChevronLeft } from "react-icons/go";
 import { FaUserCircle } from "react-icons/fa";
 import { MdRemoveRedEye } from "react-icons/md";
-import useSWR from "swr";
-import { getData } from "../services/api/queries";
+import useStore from "../services/store/authStore";
 
 const Details = () => {
   const { id } = useParams();
-  const { data } = useSWR(`/core/news/${id}`, getData);
+  const news = useStore((state) => state.news);
+  const currentNews = useStore((state) => state.currentNews);
+  const item = currentNews || news.find((n) => n.id === parseInt(id, 10));
 
-  if (!data) {
+  if (!item) {
     return <p>Loading...</p>;
   }
-
-  const item = data;
 
   return (
     <div className="details my-32 mx-32">
       <div className="detailsIcons flex">
         <div className="flex items-center mr-8">
-          <GoMoveToStart />{" "}
+          <GoMoveToStart />
           <Link to="/">
             <span className="ml-2">Landing Page</span>
           </Link>
         </div>
 
         <div className="flex items-center">
-          <GoChevronLeft />{" "}
+          <GoChevronLeft />
           <Link to="/news">
             <span className="ml-2">All News</span>
           </Link>
@@ -43,7 +42,7 @@ const Details = () => {
             </div>
             <p className="detailsDate mr-6">{item.published_date}</p>
             <div className="flex items-center">
-              <MdRemoveRedEye />{" "}
+              <MdRemoveRedEye />
               <p className="detailsView ml-2">{item.view_count}</p>
             </div>
           </div>
@@ -63,97 +62,99 @@ const Details = () => {
           </p>
 
           <div className="newsList h-auto w-auto mt-12">
-            <div className="newsList h-auto w-auto mt-12 pl-10">
-              <div className="mt-8">
-                <p className="detailsDate">Today at 11:30 pm</p>
-                <div className="detailsBorder rounded-md flex mt-3">
-                  <img
-                    src="../src/assets/images/unsplash_ndN00KmbJ1c.png"
-                    className="w-1/3 rounded-md"
-                  />
+            <div className="newsList h-auto w-auto mt-12">
+              <div className="newsList h-auto w-auto mt-12 pl-10">
+                <div className="mt-8">
+                  <p className="detailsDate">Today at 11:30 pm</p>
+                  <div className="detailsBorder rounded-md flex mt-3">
+                    <img
+                      src="../src/assets/images/unsplash_ndN00KmbJ1c.png"
+                      className="w-1/3 rounded-md"
+                    />
 
-                  <div className="mx-4">
-                    <p className="detailsWorkshop font-medium mb-4">
-                      Executive Data Science Workshop
-                    </p>
-                    <p className="detailsView flex justify-end items-center">
-                      {" "}
-                      <MdRemoveRedEye /> {item.view_count}
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-8">
-                <p className="detailsDate">September 3, 2023 at 9:10 pm</p>
-                <div className="detailsBorder rounded-md flex mt-3">
-                  <img
-                    src="../src/assets/images/unsplash_ndN00KmbJ1c.png"
-                    className="w-1/3 rounded-md"
-                  />
-
-                  <div className="mx-4">
-                    <p className="detailsWorkshop font-medium mb-4">
-                      Executive Data Science Workshop
-                    </p>
-                    <p className="detailsView flex justify-end items-center">
-                      {" "}
-                      <MdRemoveRedEye /> {item.view_count}
-                    </p>
+                    <div className="mx-4">
+                      <p className="detailsWorkshop font-medium mb-4">
+                        Executive Data Science Workshop
+                      </p>
+                      <p className="detailsView flex justify-end items-center">
+                        {" "}
+                        <MdRemoveRedEye /> {item.view_count}
+                      </p>
+                    </div>
                   </div>
                 </div>
 
-                <div className="detailsBorder rounded-md flex mt-3">
-                  <img
-                    src="../src/assets/images/unsplash_ndN00KmbJ1c.png"
-                    className="w-1/3 rounded-md"
-                  />
+                <div className="mt-8">
+                  <p className="detailsDate">September 3, 2023 at 9:10 pm</p>
+                  <div className="detailsBorder rounded-md flex mt-3">
+                    <img
+                      src="../src/assets/images/unsplash_ndN00KmbJ1c.png"
+                      className="w-1/3 rounded-md"
+                    />
 
-                  <div className="mx-4">
-                    <p className="detailsWorkshop font-medium mb-4">
-                      Executive Data Science Workshop
-                    </p>
-                    <p className="detailsView flex justify-end items-center">
-                      {" "}
-                      <MdRemoveRedEye /> {item.view_count}
-                    </p>
+                    <div className="mx-4">
+                      <p className="detailsWorkshop font-medium mb-4">
+                        Executive Data Science Workshop
+                      </p>
+                      <p className="detailsView flex justify-end items-center">
+                        {" "}
+                        <MdRemoveRedEye /> {item.view_count}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="detailsBorder rounded-md flex mt-3">
+                    <img
+                      src="../src/assets/images/unsplash_ndN00KmbJ1c.png"
+                      className="w-1/3 rounded-md"
+                    />
+
+                    <div className="mx-4">
+                      <p className="detailsWorkshop font-medium mb-4">
+                        Executive Data Science Workshop
+                      </p>
+                      <p className="detailsView flex justify-end items-center">
+                        {" "}
+                        <MdRemoveRedEye /> {item.view_count}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="detailsBorder rounded-md flex mt-3">
+                    <img
+                      src="../src/assets/images/unsplash_ndN00KmbJ1c.png"
+                      className="w-1/3 rounded-md"
+                    />
+
+                    <div className="mx-4">
+                      <p className="detailsWorkshop font-medium mb-4">
+                        Executive Data Science Workshop
+                      </p>
+                      <p className="detailsView flex justify-end items-center">
+                        {" "}
+                        <MdRemoveRedEye /> {item.view_count}
+                      </p>
+                    </div>
                   </div>
                 </div>
 
-                <div className="detailsBorder rounded-md flex mt-3">
-                  <img
-                    src="../src/assets/images/unsplash_ndN00KmbJ1c.png"
-                    className="w-1/3 rounded-md"
-                  />
+                <div className="mt-8">
+                  <p className="detailsDate">September 1, 2023 at 19:20 pm</p>
+                  <div className="detailsBorder rounded-md flex mt-3">
+                    <img
+                      src="../src/assets/images/unsplash_ndN00KmbJ1c.png"
+                      className="w-1/3 rounded-md"
+                    />
 
-                  <div className="mx-4">
-                    <p className="detailsWorkshop font-medium mb-4">
-                      Executive Data Science Workshop
-                    </p>
-                    <p className="detailsView flex justify-end items-center">
-                      {" "}
-                      <MdRemoveRedEye /> {item.view_count}
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-8">
-                <p className="detailsDate">September 1, 2023 at 19:20 pm</p>
-                <div className="detailsBorder rounded-md flex mt-3">
-                  <img
-                    src="../src/assets/images/unsplash_ndN00KmbJ1c.png"
-                    className="w-1/3 rounded-md"
-                  />
-
-                  <div className="mx-4">
-                    <p className="detailsWorkshop font-medium mb-4">
-                      Executive Data Science Workshop
-                    </p>
-                    <p className="detailsView flex justify-end items-center">
-                      {" "}
-                      <MdRemoveRedEye /> {item.view_count}
-                    </p>
+                    <div className="mx-4">
+                      <p className="detailsWorkshop font-medium mb-4">
+                        Executive Data Science Workshop
+                      </p>
+                      <p className="detailsView flex justify-end items-center">
+                        {" "}
+                        <MdRemoveRedEye /> {item.view_count}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
