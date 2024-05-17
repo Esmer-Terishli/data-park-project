@@ -1,50 +1,72 @@
 import { FaUserCircle, FaComment } from "react-icons/fa";
 import { MdRemoveRedEye } from "react-icons/md";
+import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
 
-import '../Cards/style.css'
+import "../Cards/style.css";
 
-const Cards = ({ title, description, imageUrl }) => {
+import useSWR from "swr";
+import { getData } from "../../../services/api/queries";
+
+const Cards = () => {
+  const { data } = useSWR("/core/news/", getData);
+  const navigate = useNavigate(); // Initialize useNavigate hook
+
+  const handleCardClick = (id) => {
+    navigate(`/details/${id}`);
+  };
+
   return (
-    <div className="w-1/4 rounded overflow-hidden shadow-lg m-4 mt-12">
-      <div className="">
-        <img
-          className="w-full"
-          src="src/assets/images/unsplash_ndN00KmbJ1c.png"
-          alt="Icon"
-        />
+    <>
+      <div className="my-8 ml-32">
+        {data ? <span>{data.length} news</span> : <span>Loading...</span>}
       </div>
 
-      <div className="px-6 py-4">
-        <div className="textIcon flex items-center justify-between">
-          <div className="flex items-center">
-            <div>
-              <FaUserCircle className="w-6 h-6" />
-            </div>
-            <p className="text-base ml-2">Text 1</p>
-          </div>
-          <div className="flex items-center">
-            <div className="p-2">
-              <FaComment className="w-4 h-4" />
-            </div>
-            <p className="text-base mr-4">16</p>
+      <div className="flex flex-wrap justify-center">
+        {data ? (
+          data.map((item) => (
+            <div
+              key={item.id}
+              className="w-1/4 rounded overflow-hidden shadow-lg m-4 cursor-pointer"
+              onClick={() => handleCardClick(item.id)} // Add onClick handler
+            >
+              <div className="">
+                <img className="w-full" src={item.image} alt="Icon" />
+              </div>
 
-            <div className="p-2">
-              <MdRemoveRedEye className="w-4 h-4" />
+              <div className="px-6 py-4">
+                <div className="textIcon flex items-center justify-between">
+                  <div className="flex items-center">
+                    <div>
+                      <FaUserCircle className="w-6 h-6" />
+                    </div>
+                    <p className="text-base ml-2">{item.title}</p>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="p-2">
+                      <FaComment className="w-4 h-4" />
+                    </div>
+                    <p className="text-base mr-4">{item.comment_count}</p>
+
+                    <div className="p-2">
+                      <MdRemoveRedEye className="w-4 h-4" />
+                    </div>
+                    <p className="text-base">{item.view_count}</p>
+                  </div>
+                </div>
+                <div className="borderLine border-l-2 pl-4">
+                  <p className="text-base mt-4">{item.content}</p>
+                </div>
+                <div className="dateTime flex justify-end mt-4">
+                  <p className="text-base">{item.published_date}</p>
+                </div>
+              </div>
             </div>
-            <p className="text-base">123</p>
-          </div>
-        </div>
-        <div
-          className="borderLine border-l-2 pl-4"
-        
-        >
-          <p className="text-base mt-4">{description}</p>
-        </div>
-        <div className="dateTime flex justify-end mt-4">
-          <p className="text-base">14.05.2023</p>
-        </div>
+          ))
+        ) : (
+          <p>Loading....</p>
+        )}
       </div>
-    </div>
+    </>
   );
 };
 

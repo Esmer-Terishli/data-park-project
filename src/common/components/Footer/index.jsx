@@ -8,7 +8,7 @@ const Footer = () => {
         {/* Image Section */}
         <div className="mb-4">
           <img
-            src="src/assets/images/Group.png"
+            src="../src/assets/images/Group.png"
             alt="Logo"
             className="mx-auto py-6"
           />

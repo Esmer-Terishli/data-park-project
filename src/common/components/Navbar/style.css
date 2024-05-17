@@ -12,10 +12,11 @@ nav ul li a:hover {
 }
 
 .loginBtn {
-    color: #F9A820;
+    color: #F9A820 !important;
+    background-color: transparent !important;
 }
 
 .signupBtn {
-    background-color: #F9A820;
+    background-color: #F9A820 !important;
     margin-left: 20px !important;
 }

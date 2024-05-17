@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const News = () => {
   return (
     <>
-      <div className="mt-28 flex justify-center">
+      <div className="buttons mt-28 flex justify-center">
         <Button className="mx-2 px-16">News</Button>
         <Button className="mx-2 px-16">Blogs</Button>
         <Button className="mx-2 px-16">Events</Button>
@@ -23,42 +23,9 @@ const News = () => {
         </Link>
       </div>
 
-      <div className="flex flex-wrap justify-center mt-4 mb-24">
-        <Cards
-          title="Welcome to Our Platform"
-          description="Explore our latest news and join the discussion in the forum. Explore our latest news and join the discussion in the forum."
-          imageUrl="src/assets/images/unsplash_ndN00KmbJ1c.png"
-        />
 
-        <Cards
-          title="Welcome to Our Platform"
-          description="Explore our latest news and join the discussion in the forum. Explore our latest news and join the discussion in the forum."
-          imageUrl="src/assets/images/unsplash_ndN00KmbJ1c.png"
-        />
-
-        <Cards
-          title="Welcome to Our Platform"
-          description="Explore our latest news and join the discussion in the forum. Explore our latest news and join the discussion in the forum."
-          imageUrl="src/assets/images/unsplash_ndN00KmbJ1c.png"
-        />
-
-        <Cards
-          title="Welcome to Our Platform"
-          description="Explore our latest news and join the discussion in the forum. Explore our latest news and join the discussion in the forum."
-          imageUrl="src/assets/images/unsplash_ndN00KmbJ1c.png"
-        />
-
-        <Cards
-          title="Welcome to Our Platform"
-          description="Explore our latest news and join the discussion in the forum. Explore our latest news and join the discussion in the forum."
-          imageUrl="src/assets/images/unsplash_ndN00KmbJ1c.png"
-        />
-
-        <Cards
-          title="Welcome to Our Platform"
-          description="Explore our latest news and join the discussion in the forum. Explore our latest news and join the discussion in the forum."
-          imageUrl="src/assets/images/unsplash_ndN00KmbJ1c.png"
-        />
+      <div className="mt-4 mb-24">
+        <Cards />
       </div>
     </>
   );

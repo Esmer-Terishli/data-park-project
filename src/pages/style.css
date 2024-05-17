@@ -17,10 +17,60 @@ textarea {
 }
 
 .newPost {
-    color: #f9a820;
-    font-size: 24px;
+  color: #f9a820;
+  font-size: 24px;
 }
 
 .newPostTitle {
-    color: #355474;
+  color: #355474;
+}
+
+.buttons button {
+  background-color: #f9a820;
+  transition: 0.7s;
+}
+
+.detailsIcons a,
+.detailsIcons span {
+  color: #909398;
+  font-size: 14px;
+}
+
+.details h1 {
+  color: #f9a820;
+  font-size: 34px;
+}
+
+.detailsabout div,
+.detailsabout p {
+  color: #909398;
+  font-size: 14px;
+}
+
+.detailsData p {
+  color: #355474;
+}
+
+.newsList {
+  background-color: #FDFDFD;
+}
+
+.detailsRightText, .detailsWorkshop {
+  color: #355474;
+}
+
+.detailsWorkshop {
+  font-size: 14px;
+}
+
+.detailsBorder {
+  border: 1px solid #ECEDED;
+}
+
+.detailsDate {
+  color: #909398;
+}
+
+.detailsView {
+  color: #909398;
 }

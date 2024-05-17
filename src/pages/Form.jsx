@@ -1,6 +1,17 @@
+import { useRef } from "react";
 import "../pages/style.css";
+import { MdPhotoCamera, MdOutlineDateRange } from "react-icons/md";
+import { FaUserCircle } from "react-icons/fa";
+
 
 const Form = () => {
+  const fileInputRef = useRef(null);
+
+  const handleButtonClick = (e) => {
+    fileInputRef.current.click();
+    e.preventDefault();
+  };
+
   return (
     <>
       <div className="flex flex-col justify-center h-screen my-32">
@@ -30,10 +41,10 @@ const Form = () => {
           <div className="mb-6 flex">
             <div className="w-1/2 mr-4">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="flex items-center text-gray-700 text-sm font-bold mb-2"
                 htmlFor="author"
               >
-                Author
+               <FaUserCircle className="text-lg mr-2" /> Author
               </label>
               <input
                 className="newPostTitle shadow appearance-none border rounded w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline"
@@ -45,10 +56,10 @@ const Form = () => {
 
             <div className="w-1/2 ml-4">
               <label
-                className="newPostTitle block text-sm font-bold mb-2"
+                className="newPostTitle flex items-center text-sm font-bold mb-2"
                 htmlFor="date"
               >
-                Date
+               <MdOutlineDateRange className="text-lg mr-2" /> Date
               </label>
               <input
                 className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -58,16 +69,27 @@ const Form = () => {
             </div>
           </div>
 
-          <div className="mb-4">
+          <div className="mb-4 w-1/2">
             <label
               className="newPostTitle block text-sm font-bold mb-2"
               htmlFor="photo"
             >
               Add Photo
             </label>
+            <div className="flex">
+            <button
+              className="flex justify-center newPostTitle appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+              onClick={handleButtonClick}
+            >
+              <MdPhotoCamera className="text-2xl" />
+            </button>
+            <span className="w-full ml-8">Add Photo (png.)</span>
+
+            </div>
             <input
-              className="newPostTitle appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
-              id="photo"
+              ref={fileInputRef}
+              className="hidden"
+              id="inputField"
               type="file"
             />
           </div>
@@ -85,8 +107,6 @@ const Form = () => {
               placeholder="Input Text..."
             />
           </div>
-
-
         </form>
         <div className="flex items-center justify-end mr-32">
           <button
