@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FaBars } from "react-icons/fa";
 import "../Navbar/style.css";
 import { Link } from "react-router-dom";
-import { Button } from "../../components/ui/button";
+import { Button } from "../ui/button";
 
 
 const Navbar = () => {

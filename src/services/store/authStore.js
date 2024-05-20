@@ -1,5 +1,5 @@
 // store.js
-import create from 'zustand';
+import { create } from 'zustand';
 import { getData } from '../api/requests';
 
 const useStore = create((set) => ({

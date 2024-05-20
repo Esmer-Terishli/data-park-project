@@ -3,7 +3,7 @@
   transform: translateY(-50%);
 }
 
-form {
+.formDetails {
   background-color: #fcfcfc;
   border: 1px solid #eceded;
 }

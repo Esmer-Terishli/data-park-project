@@ -1,10 +1,19 @@
+import { useEffect } from "react";
 import { Button } from "../common/components/ui/button";
 import Cards from "../common/components/Cards/index";
+import { Link } from "react-router-dom";
+import useStore from '../services/store/authStore';
 
 import "../pages/style.css";
-import { Link } from "react-router-dom";
 
 const News = () => {
+  const fetchNews = useStore((state) => state.fetchNews);
+  const news = useStore((state) => state.news);
+
+  useEffect(() => {
+    fetchNews();
+  }, [fetchNews]);
+
   return (
     <>
       <div className="buttons mt-28 flex justify-center">
@@ -23,9 +32,8 @@ const News = () => {
         </Link>
       </div>
 
-
       <div className="mt-4 mb-24">
-        <Cards />
+        <Cards news={news} />
       </div>
     </>
   );
