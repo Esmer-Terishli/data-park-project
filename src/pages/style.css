@@ -1,12 +1,7 @@
-.fixedButton {
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.formDetails {
+/* .formDetails {
   background-color: #fcfcfc;
   border: 1px solid #eceded;
-}
+} */
 
 textarea {
   height: 200px;

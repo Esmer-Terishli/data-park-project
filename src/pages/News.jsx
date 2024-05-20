@@ -22,7 +22,7 @@ const News = () => {
         <Button className="mx-2 px-16">Events</Button>
       </div>
 
-      <div className="fixedButton absolute right-8 m-4">
+      <div className="fixedButton absolute right-8 m-4" style={{ top: '50%', transform: 'translateY(-50%)' }}>
         <Link to="/form">
           <img
             src="src/assets/images/Add the new news.png"

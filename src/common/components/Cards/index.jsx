@@ -1,8 +1,7 @@
-import { FaUserCircle, FaComment } from 'react-icons/fa';
-import { MdRemoveRedEye } from 'react-icons/md';
-import { useNavigate } from 'react-router-dom';
-import '../Cards/style.css';
-import useStore from '../../../services/store/authStore';
+import { FaUserCircle, FaComment } from "react-icons/fa";
+import { MdRemoveRedEye } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
+import useStore from "../../../services/store/authStore";
 
 const Cards = () => {
   const news = useStore((state) => state.news);
@@ -17,7 +16,11 @@ const Cards = () => {
   return (
     <>
       <div className="my-8 ml-32">
-        {news.length > 0 ? <span>{news.length} news</span> : <span>Loading...</span>}
+        {news.length > 0 ? (
+          <span>{news.length} news</span>
+        ) : (
+          <span>Loading...</span>
+        )}
       </div>
 
       <div className="flex flex-wrap justify-center">
@@ -33,7 +36,7 @@ const Cards = () => {
               </div>
 
               <div className="px-6 py-4">
-                <div className="textIcon flex items-center justify-between">
+                <div className="textIcon flex items-center justify-between text-[#888888]">
                   <div className="flex items-center">
                     <div>
                       <FaUserCircle className="w-6 h-6" />
@@ -52,11 +55,11 @@ const Cards = () => {
                     <p className="text-base">{item.view_count}</p>
                   </div>
                 </div>
-                <div className="borderLine border-l-2 pl-4">
+                <div className="borderLine border-l-2 pl-4" style={{ borderColor: '#F9A820' }}>
                   <p className="text-base mt-4">{item.content}</p>
                 </div>
                 <div className="dateTime flex justify-end mt-4">
-                  <p className="text-base">{item.published_date}</p>
+                  <p className="text-base text-[#888888]">{item.published_date}</p>
                 </div>
               </div>
             </div>

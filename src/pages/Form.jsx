@@ -19,15 +19,15 @@ import { Input } from "../common/components/ui/input";
 import axios from "axios";
 
 const formSchema = z.object({
-  title: z.string(),
+  title: z.string().min(3, "Title is required"),
   image: z.instanceof(FileList),
-  published_date: z.string(),
-  author: z.string(),
-  description: z.string(),
+  published_date: z.string().min(5, "Published date is required"),
+  author: z.string().min(3, "Author is required"),
+  description: z.string().min(3, "Description is required"),
 });
 
 export function Forms() {
-  const form = useForm({
+  const { reset, handleSubmit, ...form } = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
       title: "",
@@ -61,18 +61,19 @@ export function Forms() {
     } catch (error) {
       console.error("Error submitting form data:", error);
     }
+    reset();
   };
 
   const fileRef = form.register("image");
   return (
     <Form {...form}>
       <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-8 flex flex-col justify-center h-screen my-28 mx-32"
+        onSubmit={handleSubmit(onSubmit)}
+        className="space-y-8 flex flex-col justify-center h-screen my-36 mx-32"
       >
-        <div className="formDetails rounded-md p-8">
-          <h1>Post a New News</h1>
-          <p>
+        <div className="formDetails rounded-md p-8" style={{ backgroundColor: '#fcfcfc', border: '1px solid #eceded' }}>
+          <h1 style={{ color: '#f9a820', fontSize: '24px', fontWeight: 'bold' }}>Post a New News</h1>
+          <p className="my-4 font-medium" style={{color: '#355474'}}>
             Hire top data talent for your company and elevate your data-driven
             capabilities!
           </p>
@@ -82,7 +83,7 @@ export function Forms() {
             name="title"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Title</FormLabel>
+                <FormLabel className="font-semibold" style={{color: '#355474'}}>Title</FormLabel>
                 <FormControl>
                   <Input placeholder="Name..." {...field} />
                 </FormControl>
@@ -97,7 +98,7 @@ export function Forms() {
               name="author"
               render={({ field }) => (
                 <FormItem className="w-1/2">
-                  <FormLabel className="flex">
+                  <FormLabel className="flex font-semibold" style={{color: '#355474'}}>
                     <FaUserCircle className="text-lg mr-2" /> Author
                   </FormLabel>
                   <FormControl>
@@ -113,7 +114,7 @@ export function Forms() {
               name="published_date"
               render={({ field }) => (
                 <FormItem className="w-1/2">
-                  <FormLabel className="flex">
+                  <FormLabel className="flex font-semibold" style={{color: '#355474'}}>
                     <MdOutlineDateRange className="text-lg mr-2" /> Date
                   </FormLabel>
                   <FormControl>
@@ -129,8 +130,8 @@ export function Forms() {
             control={form.control}
             name="image"
             render={({ field }) => (
-              <FormItem className="my-8">
-                <FormLabel>Add Photo</FormLabel>
+              <FormItem className="my-8 w-1/4">
+                <FormLabel className="font-semibold" style={{color: '#355474'}}>Add Photo</FormLabel>
                 <FormControl>
                   <Input
                     {...fileRef}
@@ -157,7 +158,7 @@ export function Forms() {
             name="description"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>News Description</FormLabel>
+                <FormLabel className="font-semibold" style={{color: '#355474'}}>News Description</FormLabel>
                 <FormControl>
                   <textarea
                     className="newPostTitle shadow appearance-none border rounded w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline"
@@ -170,7 +171,11 @@ export function Forms() {
             )}
           />
         </div>
-        <Button type="submit">Send</Button>
+
+        <div className="flex justify-end">
+
+        <Button type="submit" style={{backgroundColor: '#f9a820'}} className="px-24">Send</Button>
+        </div>
       </form>
     </Form>
   );
