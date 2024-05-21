@@ -14,6 +14,7 @@ import {
 } from "../common/components/ui/form";
 import { Input } from "../common/components/ui/input";
 import axios from "axios";
+import Swal from 'sweetalert2';
 
 const formSchema = z.object({
   title: z.string().min(3, "Title is required"),
@@ -55,6 +56,13 @@ export function Forms() {
       );
 
       console.log(response.data);
+
+      Swal.fire({
+        title: "Good job!",
+        text: "Your form has been submitted successfully!",
+        icon: "success"
+      });
+
     } catch (error) {
       console.error("Error submitting form data:", error);
     }
@@ -163,8 +171,7 @@ export function Forms() {
         </div>
 
         <div className="flex justify-end">
-
-        <Button type="submit" style={{backgroundColor: '#f9a820'}} className="px-24">Send</Button>
+          <Button type="submit" style={{backgroundColor: '#f9a820'}} className="px-24">Send</Button>
         </div>
       </form>
     </Form>
