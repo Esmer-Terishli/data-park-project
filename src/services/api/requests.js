@@ -7,8 +7,7 @@ const postData = async (path, postData) => {
     const response = await instance.post(path, postData);
     return response.data;
   } catch (error) {
-    // Hata yönetimi burada yapılabilir
-    console.error("Post isteği sırasında bir hata oluştu:", error);
+    console.error("An error occurred during the post request:", error);
     throw error;
   }
 };

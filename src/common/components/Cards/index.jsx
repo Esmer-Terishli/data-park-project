@@ -55,11 +55,16 @@ const Cards = () => {
                     <p className="text-base">{item.view_count}</p>
                   </div>
                 </div>
-                <div className="borderLine border-l-2 pl-4" style={{ borderColor: '#F9A820' }}>
+                <div
+                  className="borderLine border-l-2 pl-4"
+                  style={{ borderColor: "#F9A820" }}
+                >
                   <p className="text-base mt-4">{item.content}</p>
                 </div>
                 <div className="dateTime flex justify-end mt-4">
-                  <p className="text-base text-[#888888]">{item.published_date}</p>
+                  <p className="text-base text-[#888888]">
+                    {item.published_date}
+                  </p>
                 </div>
               </div>
             </div>

@@ -3,9 +3,6 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { MdPhotoCamera, MdOutlineDateRange } from "react-icons/md";
 import { FaUserCircle } from "react-icons/fa";
-
-import "../pages/style.css";
-
 import { Button } from "../common/components/ui/button";
 import {
   Form,
@@ -161,7 +158,7 @@ export function Forms() {
                 <FormLabel className="font-semibold" style={{color: '#355474'}}>News Description</FormLabel>
                 <FormControl>
                   <textarea
-                    className="newPostTitle shadow appearance-none border rounded w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                    className="newPostTitle shadow appearance-none border rounded w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline h-56"
                     placeholder="Input Text..."
                     {...field}
                   />
