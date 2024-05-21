@@ -15,7 +15,7 @@ const Cards = () => {
 
   return (
     <>
-      <div className="my-8 ml-32">
+      <div className="my-8 lg:ml-32">
         {news.length > 0 ? (
           <span>{news.length} news</span>
         ) : (
@@ -28,7 +28,7 @@ const Cards = () => {
           news.map((item) => (
             <div
               key={item.id}
-              className="w-1/4 rounded overflow-hidden shadow-lg m-4 cursor-pointer"
+              className="w-full sm:w-1/3 md:w-1/4 rounded overflow-hidden shadow-lg m-4 cursor-pointer"
               onClick={() => handleCardClick(item)}
             >
               <div className="">

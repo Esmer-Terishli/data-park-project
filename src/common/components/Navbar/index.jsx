@@ -19,7 +19,7 @@ const Navbar = () => {
               <img src="../src/assets/images/Group.png" alt="" />
             </Link>
           </span>
-          <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+          <div className="flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse">
             <Button
               type="button"
               onClick={() => alert("Login functionality")}
@@ -38,7 +38,7 @@ const Navbar = () => {
             <button
               type="button"
               onClick={toggleNav}
-              className="inline-flex items-center p-2 w-10 h-10 justify-center text-gray-500 rounded-lg md:hidden bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+              className="inline-flex items-center p-2 w-10 h-10 justify-center text-gray-500 rounded-lg lg:hidden bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
               aria-controls="navbar-sticky"
               aria-expanded={isNavOpen}
             >
@@ -47,12 +47,12 @@ const Navbar = () => {
             </button>
           </div>
           <div
-            className={`items-center justify-between w-full md:flex md:w-auto md:order-1 ${
-              isNavOpen ? "" : "hidden"
-            }`}
+            className={`items-center justify-between w-full lg:flex lg:w-auto lg:order-1 ${
+              isNavOpen ? "flex" : "hidden"
+            } lg:flex`}
             id="navbar-sticky"
           >
-            <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent">
+            <ul className="flex flex-col p-4 lg:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 lg:space-x-8 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0 lg:bg-transparent w-full">
               <li>
                 <Link
                   to="/"

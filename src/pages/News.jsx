@@ -14,10 +14,10 @@ const News = () => {
 
   return (
     <>
-      <div className="buttons mt-28 flex justify-center">
-        <Button className="mx-2 px-16 bg-[#f9a820] duration-700">News</Button>
-        <Button className="mx-2 px-16 bg-[#f9a820] duration-700">Blogs</Button>
-        <Button className="mx-2 px-16 bg-[#f9a820] duration-700">Events</Button>
+      <div className="buttons mt-28 flex justify-center flex-wrap">
+        <Button className="mx-2 my-2 px-8 sm:px-16 bg-[#f9a820] duration-700">News</Button>
+        <Button className="mx-2 my-2 px-8 sm:px-16 bg-[#f9a820] duration-700">Blogs</Button>
+        <Button className="mx-2 my-2 px-8 sm:px-16 bg-[#f9a820] duration-700">Events</Button>
       </div>
 
       <div
@@ -33,7 +33,7 @@ const News = () => {
         </Link>
       </div>
 
-      <div className="mt-4 mb-24">
+      <div className="mt-4 mb-24 px-4 sm:px-8">
         <Cards news={news} />
       </div>
     </>
