@@ -1,7 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { MdPhotoCamera, MdOutlineDateRange } from "react-icons/md";
+import { MdOutlineDateRange } from "react-icons/md";
 import { FaUserCircle } from "react-icons/fa";
 import { Button } from "../common/components/ui/button";
 import {
@@ -132,18 +132,11 @@ export function Forms() {
                 <FormControl>
                   <Input
                     {...fileRef}
-                    // ref={fileInputRef}
                     type="file"
                     className=""
                     onChange={(e) => field?.onChange(e?.target?.files?.[0])}
                   />
                 </FormControl>
-                {/* <div className="flex items-center space-x-4">
-                  <Button onClick={handleButtonClick}>
-                    <MdPhotoCamera className="text-2xl" />
-                  </Button>
-                  <span>Add Photo (png.)</span>
-                </div> */}
 
                 <FormMessage />
               </FormItem>
